@@ -41,7 +41,7 @@ public class Job {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
-        return id == job.id && Objects.equals(name, job.name) && Objects.equals(employer, job.employer) && Objects.equals(location, job.location) && Objects.equals(positionType, job.positionType) && Objects.equals(coreCompetency, job.coreCompetency);
+        return id == job.id;
     }
 
     @Override
@@ -89,6 +89,31 @@ public class Job {
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
+    }
+    public String toString() {
+        String result = "";
+        if (this.name.equals("")) {
+            this.name = "Data not available";
+        }
+        if (employer.getValue().equals("")) {
+            employer.setValue("Data not available");
+        }
+        if (location.getValue().equals("")) {
+            location.setValue("Data not available");
+        }
+        if (positionType.getValue().equals("")) {
+            positionType.setValue("Data not available");
+        }
+        if (coreCompetency.getValue().equals("")) {
+            coreCompetency.setValue("Data not available");
+        }
+        return "\n" +
+                "ID: " + this.id + "\n" +
+                "Name: " + this.name + "\n" +
+                "Employer: " + this.employer + "\n" +
+                "Location: " + this.location + "\n" +
+                "Position Type: " + this.positionType + "\n" +
+                "Core Competency: " + this.coreCompetency + "\n";
     }
 
     public int getId() {
